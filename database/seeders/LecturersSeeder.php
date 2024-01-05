@@ -33,5 +33,19 @@ class LecturersSeeder extends Seeder
             "field" => "Teknik Informatika",
             "gender" => "Female"
         ]);
+
+        Lecturers::create([
+            "name" => "Christy S.Kom, M.Kom",
+            "lecturers_id" => "45150900",
+            "field" => "Teknik Informatika",
+            "gender" => "Female"
+        ]);
+
+        Lecturers::create([
+            "name" => "Irwan S.Kom, M.Kom",
+            "lecturers_id" => "45150950",
+            "field" => "Teknik Informatika",
+            "gender" => "Male"
+        ]);
     }
 }

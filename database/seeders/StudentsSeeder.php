@@ -28,8 +28,22 @@ class StudentsSeeder extends Seeder
         ]);
 
         Students::create([
-            "name" => "Billy",
+            "name" => "Billy Chayadi",
             "students_id" => "201110337",
+            "major" => "Teknik Informatika",
+            "gender" => "Male"
+        ]);
+
+        Students::create([
+            "name" => "Vinnie Felim",
+            "students_id" => "201110400",
+            "major" => "Teknik Informatika",
+            "gender" => "Male"
+        ]);
+
+        Students::create([
+            "name" => "Felix",
+            "students_id" => "201110500",
             "major" => "Teknik Informatika",
             "gender" => "Male"
         ]);

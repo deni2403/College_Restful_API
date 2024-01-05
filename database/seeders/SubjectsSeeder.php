@@ -16,7 +16,7 @@ class SubjectsSeeder extends Seeder
         Subjects::create([
             "name" => "Logika Pemrograman Dasar",
             "subjects_id" => "IF1001",
-            "credits" => 4,
+            "credits" => 2,
             "lecturers_id" => 2
         ]);
 
@@ -30,8 +30,22 @@ class SubjectsSeeder extends Seeder
         Subjects::create([
             "name" => "Struktur Data",
             "subjects_id" => "IF1003",
-            "credits" => 2,
+            "credits" => 4,
             "lecturers_id" => 3
+        ]);
+
+        Subjects::create([
+            "name" => "Design Thinking",
+            "subjects_id" => "IF1004",
+            "credits" => 2,
+            "lecturers_id" => 4
+        ]);
+
+        Subjects::create([
+            "name" => "Pemrograman Berorientasi Objek",
+            "subjects_id" => "IF1005",
+            "credits" => 4,
+            "lecturers_id" => 5
         ]);
     }
 }

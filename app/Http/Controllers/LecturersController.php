@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LecturersRequest;
 use App\Models\Lecturers;
-
+use App\Models\Subjects;
 
 class LecturersController extends Controller
 {
@@ -74,14 +74,25 @@ class LecturersController extends Controller
         $lecturer = Lecturers::find($id);
 
         if ($lecturer) {
+            Subjects::where('lecturers_id', $lecturer->id)->update(['lecturers_id' => null]);
+
             $lecturer->delete();
             return response()->json([
                 'message' => 'Lecturer deleted successfully'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Lecturer not found'
+                'error' => 'Lecturer not found'
             ], 404);
         }
+    }
+
+    public function lecturersWithoutSubjects()
+    {
+        $lecturers = Lecturers::doesntHave('subjects')->get();
+
+        return response()->json([
+            'data' => $lecturers
+        ], 200);
     }
 }

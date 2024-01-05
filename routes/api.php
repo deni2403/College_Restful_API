@@ -39,6 +39,7 @@ Route::middleware(ApiAuthMiddleware::class)->group(function () {
     Route::get('/students/{id}', [StudentsController::class, 'show']);
     Route::put('/students/{id}', [StudentsController::class, 'update']);
     Route::delete('/students/{id}', [StudentsController::class, 'destroy']);
+    Route::get('/available-subjects/{id}', [StudentsController::class, 'getAvailableSubjects']);
     
     // Lecturers
     Route::post('/lecturers', [LecturersController::class, 'store']);
@@ -46,6 +47,7 @@ Route::middleware(ApiAuthMiddleware::class)->group(function () {
     Route::get('/lecturers/{id}', [LecturersController::class, 'show']);
     Route::put('/lecturers/{id}', [LecturersController::class, 'update']);
     Route::delete('/lecturers/{id}', [LecturersController::class, 'destroy']);
+    Route::get('/lecturers-without-subjects', [LecturersController::class, 'lecturersWithoutSubjects']);
     
     // Subjects
     Route::post('/subjects', [SubjectsController::class, 'store']);
@@ -57,8 +59,6 @@ Route::middleware(ApiAuthMiddleware::class)->group(function () {
     // Students Subjects
     Route::post('/students_subjects', [StudentsSubjectsController::class, 'store']);
     Route::get('/students_subjects', [StudentsSubjectsController::class, 'index']);
-    Route::get('/students_subjects/{id}', [StudentsSubjectsController::class, 'show']);
-    Route::put('/students_subjects/{id}', [StudentsSubjectsController::class, 'update']);
     Route::delete('/students_subjects/{id}', [StudentsSubjectsController::class, 'destroy']);
 });
 

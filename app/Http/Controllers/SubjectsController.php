@@ -9,7 +9,7 @@ class SubjectsController extends Controller
 {
     public function index()
     {
-        $subjects = Subjects::all();
+        $subjects = Subjects::with('lecturers')->get();
 
         return response()->json([
             'data' => $subjects
@@ -35,7 +35,7 @@ class SubjectsController extends Controller
 
     public function show($id)
     {
-        $subject = Subjects::find($id);
+        $subject = Subjects::with('lecturers')->find($id);
 
         if ($subject) {
             return response()->json([

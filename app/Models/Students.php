@@ -16,7 +16,7 @@ class Students extends Model
 
     public function subjects()
     {
-        return $this->belongsToMany(Subjects::class, 'students_subjects', 'students_id', 'subjects_id');
+        return $this->belongsToMany(Subjects::class, 'students_subjects', 'students_id', 'subjects_id')->withTimestamps();
     }
 
     public function enrolledSubjects()

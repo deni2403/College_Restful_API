@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentsRequest;
 use App\Models\Students;
-
+use App\Models\Subjects;
 
 class StudentsController extends Controller
-{   
+{
     public function index()
     {
         $students = Students::all();
@@ -52,7 +52,7 @@ class StudentsController extends Controller
 
     public function update(StudentsRequest $request, $id)
     {
-    
+
         $student = Students::find($id);
 
         if ($student) {
@@ -80,8 +80,22 @@ class StudentsController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Student not found'
+                'error' => 'Student not found'
             ], 404);
         }
+    }
+
+    public function getAvailableSubjects($studentId)
+    {
+        $student = Students::find($studentId);
+
+        if (!$student) {
+            return response()->json(['error' => 'Student not found'], 404);
+        }
+
+        $enrolledSubjects = $student->subjects->pluck('id')->toArray();
+        $availableSubjects = Subjects::whereNotIn('id', $enrolledSubjects)->get();
+
+        return response()->json(['data' => $availableSubjects], 200);
     }
 }
