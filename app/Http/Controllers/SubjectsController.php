@@ -79,7 +79,7 @@ class SubjectsController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Subject not found'
+                'error' => 'Subject not found'
             ], 404);
         }
     }

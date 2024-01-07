@@ -94,7 +94,7 @@ class StudentsController extends Controller
         }
 
         $enrolledSubjects = $student->subjects->pluck('id')->toArray();
-        $availableSubjects = Subjects::whereNotIn('id', $enrolledSubjects)->get();
+        $availableSubjects = Subjects::with('lecturers')->whereNotIn('id', $enrolledSubjects)->get();
 
         return response()->json(['data' => $availableSubjects], 200);
     }

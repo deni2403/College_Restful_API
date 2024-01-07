@@ -56,11 +56,11 @@ class StudentsSubjectsController extends Controller
                 $student->subjects()->detach();
 
                 return response()->json([
-                    'message' => 'Student and enrolled subjects deleted successfully',
+                    'message' => 'Enrolled subjects deleted successfully',
                 ], 200);
             } catch (\Exception $e) {
                 return response()->json([
-                    'error' => 'Failed to delete student and enrolled subjects',
+                    'error' => 'Failed to delete enrolled subjects',
                     'details' => $e->getMessage()
                 ], 500);
             }
